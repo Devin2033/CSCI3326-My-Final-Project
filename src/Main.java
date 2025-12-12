@@ -1,147 +1,42 @@
+// Main Class:
+// -Handles menu and results
+
+import java.util.Scanner;
+
 public class Main {
-
-    // Method to create History of CS Quiz
-    public static Quiz createHistoryQuiz() {
-        Quiz quiz = new Quiz("History of Computer Science", 5);
-
-        quiz.addCard(new MultipleChoiceCard(
-                "Who is considered the father of computer science?",
-                "B",
-                new String[]{
-                        "Bill Gates",
-                        "Alan Turing",
-                        "Steve Jobs",
-                        "Mark Zuckerberg"
-                }
-        ));
-
-        quiz.addCard(new TrueFalseCard(
-                "The first computer was invented in the 21st century.",
-                "False"
-        ));
-
-        quiz.addCard(new ShortAnswerCard(
-                "What does CPU stand for?",
-                "Central Processing Unit"
-        ));
-
-        quiz.addCard(new MultipleChoiceCard(
-                "Which programming language was developed first?",
-                "C",
-                new String[]{
-                        "Python",
-                        "Java",
-                        "FORTRAN",
-                        "JavaScript"
-                }
-        ));
-
-        quiz.addCard(new TrueFalseCard(
-                "Ada Lovelace is known as the first computer programmer.",
-                "True"
-        ));
-
-        return quiz;
+    
+    // Method to clear the terminal screen
+    public static void clearScreen() {
+        try {
+            String os = System.getProperty("os.name");
+            
+            if (os.contains("Windows")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
+        } catch (Exception e) {
+            for (int i = 0; i < 50; i++) {
+                System.out.println();
+            }
+        }
     }
-
-    // Method to create Web Development Quiz
-    public static Quiz createWebDevQuiz() {
-        Quiz quiz = new Quiz("Web Development", 5);
-
-        quiz.addCard(new MultipleChoiceCard(
-                "What does HTML stand for?",
-                "A",
-                new String[]{
-                        "HyperText Markup Language",
-                        "High Tech Modern Language",
-                        "Home Tool Markup Language",
-                        "Hyperlinks and Text Markup Language"
-                }
-        ));
-
-        quiz.addCard(new TrueFalseCard(
-                "CSS is used to add interactivity to websites.",
-                "False"
-        ));
-
-        quiz.addCard(new ShortAnswerCard(
-                "What programming language runs in web browsers?",
-                "JavaScript"
-        ));
-
-        quiz.addCard(new MultipleChoiceCard(
-                "Which tag is used to create a hyperlink in HTML?",
-                "B",
-                new String[]{
-                        "<link>",
-                        "<a>",
-                        "<href>",
-                        "<url>"
-                }
-        ));
-
-        quiz.addCard(new TrueFalseCard(
-                "HTTP stands for HyperText Transfer Protocol.",
-                "True"
-        ));
-
-        return quiz;
-    }
-
-    // Method to create AI Quiz
-    public static Quiz createAIQuiz() {
-        Quiz quiz = new Quiz("Artificial Intelligence", 5);
-
-        quiz.addCard(new MultipleChoiceCard(
-                "What does AI stand for?",
-                "A",
-                new String[]{
-                        "Artificial Intelligence",
-                        "Automated Information",
-                        "Advanced Integration",
-                        "Analytical Intelligence"
-                }
-        ));
-
-        quiz.addCard(new TrueFalseCard(
-                "Machine Learning is a subset of Artificial Intelligence.",
-                "True"
-        ));
-
-        quiz.addCard(new ShortAnswerCard(
-                "What type of AI can understand and generate human language?",
-                "NLP"
-        ));
-
-        quiz.addCard(new MultipleChoiceCard(
-                "Which company developed ChatGPT?",
-                "C",
-                new String[]{
-                        "Google",
-                        "Microsoft",
-                        "OpenAI",
-                        "Meta"
-                }
-        ));
-
-        quiz.addCard(new TrueFalseCard(
-                "Neural networks are inspired by the human brain.",
-                "True"
-        ));
-
-        return quiz;
-    }
-
+    
+    // Method to display results
     public static void displayResults(String quizTitle, int score, int total) {
+        // Display Quiz Result Header
         System.out.println("\n╔════════════════════════════════════════╗");
         System.out.println("           QUIZ RESULTS");
         System.out.println("╚════════════════════════════════════════╝");
-        System.out.println("Quiz: " + quizTitle);
-        System.out.println("Score: " + score + "/" + total);
 
+        System.out.println("Quiz: " + quizTitle);            // Diplays quiz title
+        System.out.println("Score: " + score + "/" + total); // Displays total score
+        
         double percentage = (double) score / total * 100;
-        System.out.println("Percentage: " + String.format("%.0f", percentage) + "%");
-
+        System.out.println("Percentage: " + String.format("%.0f", percentage) + "%"); // Displays score percentage
+        
+        // if statement for grade message
         if (percentage >= 80) {
             System.out.println("Grade: Excellent! 🌟");
         } else if (percentage >= 60) {
@@ -150,21 +45,25 @@ public class Main {
             System.out.println("Grade: Keep studying! 📚");
         }
     }
-
+    
+    // Main Method
     public static void main(String[] args) {
-        java.util.Scanner scanner = new java.util.Scanner(System.in);
-        boolean running = true;
-
-        // Welcome message
+        Scanner scan = new Scanner(System.in); // For input
+        boolean running = true; // flag variable 
+        
+        // Prints welcome message header
         System.out.println("\n╔════════════════════════════════════════╗");
-        System.out.println("     WELCOME TO FLASHCARD QUIZ APP!");
+        System.out.println("     WELCOME TO TEAMS' 5 QUIZ APP!");
         System.out.println("╚════════════════════════════════════════╝");
-
+        
         while (running) {
-            // Display menu
+            
+            // Prints selection header
             System.out.println("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
             System.out.println("         CHOOSE YOUR QUIZ");
             System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+
+            // Prints Selection menu
             System.out.println("1. History of Computer Science");
             System.out.println("2. Web Development");
             System.out.println("3. Artificial Intelligence");
@@ -172,40 +71,60 @@ public class Main {
             System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
             System.out.print("\nEnter your choice (1-4): ");
 
-            String choice = scanner.nextLine();
-            Quiz selectedQuiz = null;
 
-            // POLYMORPHISM: We can store different quiz types in one variable!
+            // Gets user input
+            String choice = scan.nextLine();
+            clearScreen();
+
+            // Temporary quiz object 
+            Quiz selectedQuiz = null;
+            
+            // Switch statement 
+            // Creates the corresponding quiz object based on user input
             switch (choice) {
                 case "1":
-                    selectedQuiz = createHistoryQuiz();
+                    selectedQuiz = new HistoryQuiz();
                     break;
                 case "2":
-                    selectedQuiz = createWebDevQuiz();
+                    selectedQuiz = new WebDevQuiz();
                     break;
                 case "3":
-                    selectedQuiz = createAIQuiz();
+                    selectedQuiz = new AIQuiz();
                     break;
                 case "4":
-                    System.out.println("\nThank you for using Flashcard Quiz App!");
+                    // Displays goodbye message when user types "4"
+                    System.out.println("\nThank you for using Team 5's Quiz App!");
                     System.out.println("Goodbye! 👋");
-                    running = false;
+                    running = false; // updates flag variable to quit loop
                     continue;
                 default:
+                    // Displays error if anything else beside 1-4 is inputed
                     System.out.println("\n❌ Invalid choice. Please try again.");
                     continue;
             }
-
-            // Start the selected quiz
-            if (selectedQuiz != null) {
-                int score = selectedQuiz.startQuiz(scanner);
-                displayResults(selectedQuiz.getTitle(), score, selectedQuiz.getTotalCards());
-
-                System.out.println("\nPress Enter to return to main menu...");
-                scanner.nextLine();
+            
+            // Starts the selected quiz
+            if (selectedQuiz != null) { 
+                int score = selectedQuiz.startQuiz(scan);
+                
+                // If statement to check
+                // if quiz was quit (score = -1) or completed normally
+                if (score == -1) {
+                    // Quiz was quit, clear screen and go back to menu
+                    clearScreen();
+                } else {
+                    // Quiz completed, show results
+                    displayResults(selectedQuiz.getTitle(), score, selectedQuiz.getTotalCards());
+                    
+                    System.out.println("\nPress Enter to return to main menu...");
+                    scan.nextLine();
+                    
+                    // Clears screen before showing menu again
+                    clearScreen();
+                }
             }
         }
 
-        scanner.close();
+        scan.close(); // close scanner 
     }
 }
