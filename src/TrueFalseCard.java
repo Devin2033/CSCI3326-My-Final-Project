@@ -5,14 +5,14 @@
 
 class TrueFalseCard extends Card {
     
-    // Method to set up a true or false card
+    // Constructor that creates a true or false card
     // Input: Question, Answer
     public TrueFalseCard(String question, String answer) {
         super(question, answer);
     }
     
     // Polymorphism: 
-    // Different way to check answers
+    // -checks answers its own way
     @Override
     public boolean checkAnswer(String userAnswer) {
         // trims input and make it lower case

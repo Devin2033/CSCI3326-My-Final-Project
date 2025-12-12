@@ -5,12 +5,14 @@
 
 class ShortAnswerCard extends Card {
     
+    // Constructor that creates a short answer card
+    // Input: Question, Answer
     public ShortAnswerCard(String question, String answer) {
         super(question, answer);
     }
     
     // Polymorphism: 
-    // Another way to check answers
+    // -checks answers its own way
     @Override
     public boolean checkAnswer(String userAnswer) {
         return userAnswer.trim().equalsIgnoreCase(getAnswer().trim());

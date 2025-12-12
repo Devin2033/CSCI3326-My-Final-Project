@@ -6,7 +6,7 @@
 class MultipleChoiceCard extends Card {
     private String[] options;
     
-    // Method to set up a multiple choice card
+    // Constructor that creates a multiple choice card
     // Input: Question, Answer, Answer Choices
     public MultipleChoiceCard(String question, String answer, String[] options) {
         super(question, answer);  // Calls parent constructor
@@ -14,7 +14,7 @@ class MultipleChoiceCard extends Card {
     }
     
     // Polymophism:
-    // -This card checks answers its own way
+    // -checks answers its own way
     @Override
     public boolean checkAnswer(String userAnswer) {
         // returns user's answer choice.
@@ -27,7 +27,7 @@ class MultipleChoiceCard extends Card {
     @Override
     public void displayCard() {
         super.displayCard();
-        // Since answer choices for a question are store as an array,
+        // Since answer choices for a question are stored as an array,
         // this loop goes through and prints out the choices
         for (int i = 0; i < options.length; i++) {
             System.out.println((char)('A' + i) + ") " + options[i]);

@@ -65,7 +65,7 @@ public class Main {
 
             // Prints Selection menu
             System.out.println("1. History of Computer Science");
-            System.out.println("2. Web Development");
+            System.out.println("2. Java Trivia");
             System.out.println("3. Artificial Intelligence");
             System.out.println("4. Exit");
             System.out.println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
@@ -76,7 +76,7 @@ public class Main {
             String choice = scan.nextLine();
             clearScreen();
 
-            // Temporary quiz object 
+            // Temporary object 
             Quiz selectedQuiz = null;
             
             // Switch statement 
@@ -86,7 +86,7 @@ public class Main {
                     selectedQuiz = new HistoryQuiz();
                     break;
                 case "2":
-                    selectedQuiz = new WebDevQuiz();
+                    selectedQuiz = new JavaQuiz();
                     break;
                 case "3":
                     selectedQuiz = new AIQuiz();
