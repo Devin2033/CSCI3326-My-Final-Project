@@ -32,10 +32,11 @@ class Quiz {
         System.out.println("(Type 'quit' at any time to return to menu)");
         
         // to keep track of score
-        int score = 0; 
+        int score = 0;
         
         // Displays corresponding quiz cards
         for (int i = 0; i < totalCards; i++) {
+            // Question Header
             System.out.println("\n━━━ Question " + (i + 1) + " of " + totalCards + " ━━━");
             
             // Polymorphism: 
@@ -43,13 +44,11 @@ class Quiz {
             cards[i].displayCard();
             
             System.out.print("\nYour answer: ");
-            String userAnswer = scanner.nextLine(); // gets user input
+            String userAnswer = scanner.nextLine();  // gets user input
             
             // Check if user wants to quit
             if (userAnswer.trim().equalsIgnoreCase("quit")) {
-                // Prints quiz cancelled message
                 System.out.println("\n⚠️  Quiz cancelled. Returning to main menu...");
-
                 return -1;  // Return -1 to indicate quiz was quit
             }
             
@@ -61,9 +60,17 @@ class Quiz {
             } else {
                 System.out.println("✗ Incorrect!");
             }
+            
+            // Wait for user to press Enter before continuing
+            System.out.println("\nPress Enter to continue...");
+            scanner.nextLine();
+            
+            // Clear screen before next question
+            if (i < totalCards - 1) {
+                Main.clearScreen();
+            }
         }
         
-        // returns quiz score
         return score;
     }
     

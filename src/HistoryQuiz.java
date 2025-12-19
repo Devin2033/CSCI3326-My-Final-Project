@@ -51,6 +51,11 @@ class HistoryQuiz extends Quiz {
             }
         ));
 
+        addCard(new ShortAnswerCard(
+                "What company created the first microprocessor?",
+                "intel"
+        ));
+
         addCard(new MultipleChoiceCard(
             "What does CS stand for?",
             "B",
@@ -73,6 +78,11 @@ class HistoryQuiz extends Quiz {
             }
         ));
 
+        addCard(new ShortAnswerCard(
+                "What company created the Windows operating system?",
+                "microsoft"
+        ));
+
         addCard(new TrueFalseCard(
             "The first computer virus was created in the 1980s.",
             "True"
@@ -86,16 +96,6 @@ class HistoryQuiz extends Quiz {
         addCard(new TrueFalseCard(
             "The transistor was invented after the first microprocessor.",
             "False"
-        ));
-
-        addCard(new ShortAnswerCard(
-                "What company created the first microprocessor?",
-                "intel"
-        ));
-
-        addCard(new ShortAnswerCard(
-                "What company created the Windows operating system?",
-                "microsoft"
         ));
 
     }

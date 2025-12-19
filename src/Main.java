@@ -7,20 +7,10 @@ public class Main {
     
     // Method to clear the terminal screen
     public static void clearScreen() {
-        try {
-            String os = System.getProperty("os.name");
-            
-            if (os.contains("Windows")) {
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            } else {
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-            }
-        } catch (Exception e) {
-            for (int i = 0; i < 50; i++) {
-                System.out.println();
-            }
-        }
+        // \033[H: Moves cursor to the top-left corner
+        // \033[2J: Clears the entire screen
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
     
     // Method to display results
@@ -53,7 +43,7 @@ public class Main {
         
         // Prints welcome message header
         System.out.println("\n╔════════════════════════════════════════╗");
-        System.out.println("     WELCOME TO TEAMS' 5 QUIZ APP!");
+        System.out.println("     WELCOME TO TEAM 5's QUIZ APP!");
         System.out.println("╚════════════════════════════════════════╝");
         
         while (running) {
@@ -113,7 +103,8 @@ public class Main {
                     // Quiz was quit, clear screen and go back to menu
                     clearScreen();
                 } else {
-                    // Quiz completed, show results
+                    // Quiz completed, clear terminal and show results
+                    clearScreen();
                     displayResults(selectedQuiz.getTitle(), score, selectedQuiz.getTotalCards());
                     
                     System.out.println("\nPress Enter to return to main menu...");

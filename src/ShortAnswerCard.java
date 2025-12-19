@@ -1,7 +1,7 @@
 // ShortAnswerCard Class:
 // -Inheritance-> ShortAnswerCard IS A Card
 
-// This class configures the open ended card/question format
+// This class defines the behavior and structure of short answer questions
 
 class ShortAnswerCard extends Card {
     

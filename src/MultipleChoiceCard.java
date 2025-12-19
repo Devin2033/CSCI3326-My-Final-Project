@@ -1,7 +1,7 @@
 // MultipleChoiceCard Class:
 // -Inheritance-> MultipleChoiceCard IS A Card
 
-// This class configures the multiple choice card/question format
+// This class defines the behavior and structure of multiple choice questions
 
 class MultipleChoiceCard extends Card {
     private String[] options;

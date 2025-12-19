@@ -1,7 +1,7 @@
 // TrueFalseCard Class:
 // -Inheritance-> TrueFalseCard IS A Card
 
-// This class configures the True or False card/question format
+// This class defines the behavior and structure of True or False questions
 
 class TrueFalseCard extends Card {
     
